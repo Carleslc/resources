@@ -50,8 +50,8 @@ def get_source(url):
     try:
         source = get(args.url)
         source.raise_for_status()
-    except:
-        print_colored(f"Connection Error, check that {url} is accessible", Style.BRIGHT, Fore.RED)
+    except Exception as e:
+        print_colored(e, Style.BRIGHT, Fore.RED)
         exit(1)
     return BeautifulSoup(source.content, 'html.parser')
 
