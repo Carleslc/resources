@@ -48,7 +48,7 @@ def print_meta(og_tag, *colors):
 
 def get_source(url):
     try:
-        source = get(args.url)
+        source = get(args.url, headers={'User-Agent': 'Mozilla/5.0'})
         source.raise_for_status()
     except Exception as e:
         print_colored(e, Style.BRIGHT, Fore.RED)
