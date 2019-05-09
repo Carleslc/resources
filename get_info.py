@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+import re
 import json
 import argparse
 import pyperclip
@@ -12,6 +13,8 @@ from colorama import Fore, Style, init
 from PIL import Image
 
 RESOURCES_URL = "https://airtable.com/shrnzLIolsKJMD9Ql"
+THUMBNAIL_URL = "https://api.thumbnail.ws/api/abd0c3864495e337e453a3795c676a9ead164b1b3030/thumbnail/get"
+SPLIT_CHARS = "-:."
 
 def set_args():
     global args
@@ -19,19 +22,24 @@ def set_args():
     parser.add_argument("url", help="website URL")
     parser.add_argument("--display", action='store_true', help="set if you want to show website og:image")
     parser.add_argument("--add", action='store_true', help="open the resource list form to add this website")
+    parser.add_argument("--colorless", action='store_true', help="set for non-color console displays")
     args = parser.parse_args()
 
 def print_colored(message, *colors):
     def printnoln(s):
         print(s, end='', flush=True)
-    for color in colors:
-        printnoln(color)
-    print(message)
-    printnoln(Style.RESET_ALL)
+    if args.colorless:
+        print(message)
+    else:
+        for color in colors:
+            printnoln(color)
+        print(message)
+        if not args.colorless:
+            printnoln(Style.RESET_ALL)
 
 def print_meta(og_tag, *colors):
     prop = html.find("meta", property=f"og:{og_tag}")
-    if prop:
+    if prop is not None:
         prop = prop["content"]
         print_colored(prop, *colors)
     else:
@@ -50,6 +58,9 @@ def get_source(url):
 def get_url(url, params):
     return url + '?' + urlencode(params)
 
+def thumbnail(url):
+    return get_url(THUMBNAIL_URL, { 'url': url, 'width': 1080 })
+
 def copy_display(image_url):
     pyperclip.copy(image_url)
     print_colored('Image URL copied to clipboard!', Style.DIM)
@@ -57,13 +68,17 @@ def copy_display(image_url):
         Image.open(get(image_url, stream=True).raw).show()
 
 def add_resource(title, link, description):
-    params = {
-        'prefill_Title': title,
-        'prefill_Link': link,
-        'prefill_Description': description
-    }
+    params = { 'prefill_Link': link }
+    if title is not None:
+        params['prefill_Title'] = title
+    if description is not None:
+        params['prefill_Description'] = description
     url = get_url(RESOURCES_URL, params)
     webbrowser.open(url)
+
+def strip_title(title):
+    if title is not None:
+        return re.split(f"[{SPLIT_CHARS}]+", title)[0].strip()
 
 if __name__ == "__main__":
     set_args()
@@ -72,14 +87,14 @@ if __name__ == "__main__":
     html = get_source(args.url)
     #print_colored(html.prettify(), Style.DIM)
     
-    url = print_meta("url", Style.DIM)
+    url = print_meta("url", Style.DIM) or args.url
     site_name = print_meta("site_name", Style.BRIGHT)
-    title = print(html.find("title").string)
+    title = html.find("title").string.strip()
+    print(title)
     print_meta("title", Fore.GREEN)
     description = print_meta("description", Fore.CYAN)
     image = print_meta("image", Fore.YELLOW)
-    if image:
-        copy_display(image)
+    copy_display(image or thumbnail(url))
 
     if args.add:
-        add_resource(site_name or title, url or args.url, description)
+        add_resource(site_name or strip_title(title), url, description)
