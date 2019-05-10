@@ -2,7 +2,7 @@
 
 _Lista colaborativa de herramientas y servicios para prototipado, diseño, análisis y desarrollo._
 
-## Tabla de contenidos
+### Tabla de contenidos
 
 <!-- MarkdownTOC -->
 
@@ -33,6 +33,21 @@ Cuando se necesitan añadir varias páginas web puede resultar cansado rellenar 
 ## Script
 
 Si lo prefieres, puedes utilizar el script [get_info.py](https://raw.githubusercontent.com/Carleslc/resources/master/get_info.py) para obtener información de una página web mediante sus [meta-etiquetas sociales](http://ogp.me/) y autorellenar el formulario.
+
+#### Installación
+
+1. Instala [Python 3.6 o superior](https://www.python.org/downloads/).
+2. Instala las siguientes dependencias:
+
+```
+pip3 install pyperclip
+pip3 install bs4
+pip3 install colorama
+pip3 install requests
+pip3 install Pillow
+```
+
+#### Uso
 
 ```
 usage: get_info.py [-h] [--display] [--add] [--colorless] url
