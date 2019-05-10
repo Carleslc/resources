@@ -6,13 +6,13 @@ _Lista colaborativa de herramientas y servicios para prototipado, diseño, anál
 
 <!-- MarkdownTOC -->
 
-- [Introducción](#introduccin)
-- [Añadir recursos](#aadir-recursos)
-- [Extensión de Google Chrome](#extensin-de-google-chrome)
+- [Introducción](#introducción)
+- [Añadir recursos](#añadir-recursos)
+- [Extensión de Google Chrome](#extensión-de-google-chrome)
 - [Script](#script)
-- [Hammerspoon Keybinding (Mac OSX)](#hammerspoon-keybinding-mac-osx)
-- [Cómo crear tu propia página de recursos](#cmo-crear-tu-propia-pgina-de-recursos)
-- [Acknowledgements](#acknowledgements)
+  - [Hammerspoon Keybinding (Mac OSX)](#hammerspoon-keybinding-macos)
+- [Cómo crear tu propia página de recursos](#cómo-crear-tu-propia-página-de-recursos)
+- [Agradecimientos](#agradecimientos)
 
 <!-- MarkdownTOC -->
 
@@ -61,7 +61,7 @@ https://github.githubassets.com/images/modules/open_graph/github-logo.png
 Image URL copied to clipboard!
 ```
 
-También se abrirá el formulario para añadir recursos en el navegador con algunos parámetros rellenados. Puedes utilizar la imagen que se ha copiado como URL en el portapapeles para rellenar el parámetro _Imagen_ del formulario. De esta forma solo tendrás que rellenar los campos _Modelo_ y _Categorías_.
+También se abrirá el formulario para añadir recursos en el navegador con algunos parámetros rellenados. Puedes utilizar la imagen que se ha copiado como URL en el portapapeles para rellenar el parámetro _Imagen_ del formulario. De esta forma solo tendrás que acabar de rellenar los campos _Modelo_ y _Categorías_.
 
 ![Ejemplo de formulario autocompletado](https://i.imgur.com/0kjLPhM.png)
 
@@ -76,7 +76,7 @@ Para configurar el atajo de teclado debes descargar [este plugin](https://github
 Luego, en el fichero de configuración `~/.hammerspoon/init.lua` copia el siguiente código:
 
 ```lua
--- Añade un recurso a https://carleslc.me/resources con la URL que hayas copiado en el portapapeles
+-- Añade un recurso con la URL que hayas copiado en el portapapeles
 
 hs.loadSpoon("Resources") -- Carga el plugin
 
@@ -93,9 +93,9 @@ Haz click en `Reload Config` en el menú de Hammerspoon y ya podrás utilizar es
 Si quieres crear tu propia página para visualizar solo tus propios recursos, con tu propio formulario, tu propio enlace opcional para que otras personas colaboren y poder personalizar la página sigue los siguientes pasos:
 
 1. Visita [esta base de Airtable](https://airtable.com/shr1jTThqSwdL3ZWN) en la que se almacenan los recursos.
-2. Haz click en ![Copy base](https://i.imgur.com/84IVALz.png) para duplicar la base de datos en tu cuenta de Airtable. Si no tienes cuenta de Airtable tendrás que crear una. El plan gratuito permite tener hasta 1200 recursos (filas de la tabla).
+2. Haz click en ![Copy base](https://i.imgur.com/vTfzOJp.png) para duplicar la base de datos en tu cuenta de Airtable. Si no tienes cuenta de Airtable tendrás que crear una. El plan gratuito permite tener hasta 1200 recursos (filas de la tabla).
 3. Visita la página [Getting started: Table2Site](https://table2site.com/documentation/getting-started) y sigue los pasos que allí se indican para tener tu propia página gratuita enlazada con la base de Airtable que has copiado en el paso anterior.
 
 ## Agradecimientos
 
-El logo.png ha sido creado por [Freepik](https://www.freepik.com/ "Freepik") como se puede ver [aquí](https://www.flaticon.com/free-icon/attachment_1717697) y está licenciado por [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/ "Creative Commons BY 3.0")
+El [logo.png](https://github.com/Carleslc/resources/blob/master/ChromeExtension/logo.png) ha sido creado por [Freepik](https://www.freepik.com/ "Freepik") como se puede ver [aquí](https://www.flaticon.com/free-icon/attachment_1717697) y está licenciado por [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/ "Creative Commons BY 3.0").
