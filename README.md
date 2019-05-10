@@ -34,7 +34,7 @@ Cuando se necesitan añadir varias páginas web puede resultar cansado rellenar 
 
 Si lo prefieres, puedes utilizar el script [get_info.py](https://raw.githubusercontent.com/Carleslc/resources/master/get_info.py) para obtener información de una página web mediante sus [meta-etiquetas sociales](http://ogp.me/) y autorellenar el formulario.
 
-#### Installación
+#### Instalación
 
 1. Instala [Python 3.6 o superior](https://www.python.org/downloads/).
 2. Instala las siguientes dependencias:
@@ -101,7 +101,7 @@ spoon.Resources.path = '/Users/carleslc/Git/GitHub/resources/get_info.py' -- Cam
 spoon.Resources:bindHotkeys({ add = {{"ctrl", "alt", "cmd"}, "W"}) -- Atajo de teclado Ctrl + Alt + Cmd + W
 ```
 
-Haz click en `Reload Config` en el menú de Hammerspoon y ya podrás utilizar este atajo de teclado.
+Haz click en `Reload Config` en el menú de Hammerspoon. Copia una URL y utiliza el atajo de teclado para abrir el formulario con los campos autocompletados.
 
 ## Cómo crear tu propia página de recursos
 
