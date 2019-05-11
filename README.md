@@ -82,8 +82,6 @@ También se abrirá el formulario para añadir recursos en el navegador con algu
 
 ### Hammerspoon Keybinding (macOS)
 
-![En desarrollo](https://img.shields.io/badge/status-in%20development-red.svg)
-
 Si utilizas OS X puedes añadir un atajo de teclado que ejecute el script con un enlace que copies en el portapapeles utilizando [Hammerspoon](http://hammerspoon.org). Instala [Hammerspoon](http://hammerspoon.org) primero si no lo tienes instalado.
 
 Para configurar el atajo de teclado debes descargar [este plugin](https://github.com/Carleslc/Spoons/blob/master/Spoons/Resources.spoon/markdown/Resources.md). Descomprime el fichero `Resources.zip` y haz doble click en `Resources.spoon` para que se mueva al directorio de [Spoons](https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md) de Hammerspoon.
@@ -98,7 +96,7 @@ hs.loadSpoon("Resources") -- Carga el plugin
 spoon.Resources.python = 'python3' -- Comando de python
 spoon.Resources.path = '/Users/carleslc/Git/GitHub/resources/get_info.py' -- Cambia el directorio donde se encuentra el script
 
-spoon.Resources:bindHotkeys({ add = {{"ctrl", "alt", "cmd"}, "W"}) -- Atajo de teclado Ctrl + Alt + Cmd + W
+spoon.Resources:bindHotkeys({ add = {{"ctrl", "alt", "cmd"}, "W"} }) -- Atajo de teclado Ctrl + Alt + Cmd + W
 ```
 
 Haz click en `Reload Config` en el menú de Hammerspoon. Copia una URL y utiliza el atajo de teclado para abrir el formulario con los campos autocompletados.
