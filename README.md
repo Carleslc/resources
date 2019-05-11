@@ -30,6 +30,8 @@ Cuando se necesitan añadir varias páginas web puede resultar cansado rellenar 
 
 ![En desarrollo](https://img.shields.io/badge/status-in%20development-red.svg)
 
+Accede a los ajustes de extensiones en [chrome://extensions/](chrome://extensions/) y activa el *Modo de desarrollador*. Luego haz click en *Cargar descomprimida* y selecciona la carpeta [ChromeExtension](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Carleslc/resources/tree/master/ChromeExtension).
+
 ## Script
 
 Si lo prefieres, puedes utilizar el script [get_info.py](https://raw.githubusercontent.com/Carleslc/resources/master/get_info.py) para obtener información de una página web mediante sus [meta-etiquetas sociales](http://ogp.me/) y autorellenar el formulario.

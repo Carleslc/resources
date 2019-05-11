@@ -1,0 +1,12 @@
+.container {
+    max-height: 600px;
+    min-height: 300px;
+    width: 250px;
+    border-radius: 2px;
+    background: white;
+}
+
+body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+}
