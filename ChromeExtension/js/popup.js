@@ -18,7 +18,7 @@ function addResource(title, link, description) {
 }
 
 function loadMetaInfo(currentTab) {
-    chrome.tabs.sendMessage(currentTab.id, { event: "getMetaInfo" }, function(response) {
+    chrome.tabs.sendMessage(currentTab.id, { event: "getMetaInfo", tab: currentTab }, function(response) {
         console.log("POPUP");
         console.log(response);
         $('#site-title').text(response.title);

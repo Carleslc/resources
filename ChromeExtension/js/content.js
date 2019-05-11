@@ -14,9 +14,9 @@ sendEvent("enablePopup"); // Enable extension only for matching schema (http/htt
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.event === "getMetaInfo") {
-        let currentTab = sender.tab;
+        let currentTab = request.tab;
         let response = {
-            title: og("site_name") || currentTab.title,
+            title: og("site_name") || currentTab.title || og("title"),
             description: meta("description") || og("description"),
             url: og("url") || currentTab.url
         };
