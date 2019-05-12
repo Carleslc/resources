@@ -28,13 +28,21 @@ Cuando se necesitan añadir varias páginas web puede resultar cansado rellenar 
 
 ## Extensión de Google Chrome
 
-![En desarrollo](https://img.shields.io/badge/status-in%20development-red.svg)
-
 Accede a los ajustes de extensiones en [chrome://extensions/](chrome://extensions/) y activa el *Modo de desarrollador*. Luego haz click en *Cargar descomprimida* y selecciona la carpeta [ChromeExtension](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/Carleslc/resources/tree/master/ChromeExtension).
+
+Ahora ya puedes acceder a una página web que quieras añadir como recurso y hacer click en el icono de la extensión.
+
+Se mostrará una pequeña ventana con información de la página web obtenida de sus meta-etiquetas. Puedes hacer click en la imagen que se muestra para copiar su dirección de enlace en el portapapeles.
+
+![Ejemplo extensión](https://i.imgur.com/lPaqtCb.png)
+
+Si haces click en *"Añadir recurso"* se abrirá el formulario para añadir recursos en el navegador con algunos campos rellenados como el *Nombre*, *Enlace* o *Descripción*. Puedes utilizar la imagen que has copiado previamente en el portapapeles para rellenar el parámetro _Imagen_ del formulario. De esta forma solo tendrás que acabar de rellenar los campos _Modelo_ y _Categorías_.
+
+![Ejemplo autorelleno](https://i.imgur.com/Q92O3f1.png)
 
 ## Script
 
-Si lo prefieres, puedes utilizar el script [get_info.py](https://raw.githubusercontent.com/Carleslc/resources/master/get_info.py) para obtener información de una página web mediante sus [meta-etiquetas sociales](http://ogp.me/) y autorellenar el formulario.
+Si lo prefieres, puedes utilizar el script [get_info.py](https://raw.githubusercontent.com/Carleslc/resources/master/get_info.py) para obtener información de una página web mediante sus meta-etiquetas y autorellenar el formulario.
 
 #### Instalación
 
@@ -64,24 +72,24 @@ optional arguments:
   --colorless  set for non-color console displays
 ```
 
-Ejemplo: `python3 get_info.py --add https://github.com/`
+Ejemplo: `python3 get_info.py --add https://trello.com/`
 
 Este comando mostrará el siguiente resultado por consola y copiará el enlace de la imagen etiquetada como `og:image` si la hubiera o de una vista previa de la página en caso de que no disponga de imagen social. Utiliza la opción adicional `--display` si quieres visualizar la imagen en tu ordenador.
 
 ```
-https://github.com
-GitHub
-The world’s leading software development platform · GitHub
-Build software better, together
-GitHub brings together the world’s largest community of developers to discover, share, and build better software. From open source projects to private team repositories, we’re your all-in-one platform for collaborative development.
-GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.
-https://github.githubassets.com/images/modules/open_graph/github-logo.png
+https://trello.com
+No og:site_name provided
+Trello
+Trello
+Infinitely flexible. Incredibly easy to use. Great mobile apps. It's free. Trello keeps track of everything, from the big picture to the minute details.
+Infinitely flexible. Incredibly easy to use. Great mobile apps. It's free. Trello keeps track of everything, from the big picture to the minute details.
+https://d2k1ftgv7pobq7.cloudfront.net/meta/p/res/images/99b9fe5eef1924ee2fe0306b5cdd6541/home-preview.jpg
 Image URL copied to clipboard!
 ```
 
-También se abrirá el formulario para añadir recursos en el navegador con algunos parámetros rellenados. Puedes utilizar la imagen que se ha copiado como URL en el portapapeles para rellenar el parámetro _Imagen_ del formulario. De esta forma solo tendrás que acabar de rellenar los campos _Modelo_ y _Categorías_.
+También se abrirá el formulario para añadir recursos en el navegador con algunos campos rellenados. Puedes utilizar la imagen que se ha copiado como URL en el portapapeles para rellenar el parámetro _Imagen_ del formulario. De esta forma solo tendrás que acabar de rellenar los campos _Modelo_ y _Categorías_.
 
-![Ejemplo de formulario autocompletado](https://i.imgur.com/0kjLPhM.png)
+![Ejemplo autorelleno](https://i.imgur.com/Q92O3f1.png)
 
 ### Hammerspoon Keybinding (macOS)
 
