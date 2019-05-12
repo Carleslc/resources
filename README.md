@@ -64,7 +64,7 @@ optional arguments:
   --colorless  set for non-color console displays
 ```
 
-Ejemplo: `python3 get_info.py --add https://github.com`
+Ejemplo: `python3 get_info.py --add https://github.com/`
 
 Este comando mostrará el siguiente resultado por consola y copiará el enlace de la imagen etiquetada como `og:image` si la hubiera o de una vista previa de la página en caso de que no disponga de imagen social. Utiliza la opción adicional `--display` si quieres visualizar la imagen en tu ordenador.
 
@@ -73,6 +73,7 @@ https://github.com
 GitHub
 The world’s leading software development platform · GitHub
 Build software better, together
+GitHub brings together the world’s largest community of developers to discover, share, and build better software. From open source projects to private team repositories, we’re your all-in-one platform for collaborative development.
 GitHub is where people build software. More than 36 million people use GitHub to discover, fork, and contribute to over 100 million projects.
 https://github.githubassets.com/images/modules/open_graph/github-logo.png
 Image URL copied to clipboard!

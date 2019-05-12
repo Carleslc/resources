@@ -17,13 +17,18 @@
     <div class="container">
         <h2 id="site-title"></h2>
         <p id="site-description"></p>
-        <div>
-            <i id="site-url"></i>
-            <button id="add-btn" class="btn btn-success btn-block" disabled>Añadir recurso</button>
+        <div id="site-thumbnail-overlay" class="view overlay">
+            <img id="site-thumbnail" alt="Preview image"></img>
+            <div class="mask flex-center rgba-stylish-light">
+                <p class="big">📋</p>
+            </div>
         </div>
+        <div id="status" class="alert alert-light" role="alert"></div>
+        <p id="site-url" class="link"></p>
+        <button id="add-btn" class="btn btn-success btn-block" disabled>Añadir recurso</button>
     </div>
 
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap-4.3.1.min.js"></script>
     <script src="js/lib.js"></script>
     <script src="js/popup.js"></script>

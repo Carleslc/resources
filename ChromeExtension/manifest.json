@@ -13,15 +13,16 @@
         "64": "logo.png"
     },
     "background": {
-        "scripts": ["js/lib.js", "js/eventPage.js"],
+        "scripts": ["js/lib.js", "js/background.js"],
         "persistent": false
     },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["js/lib.js", "js/content.js", "js/jquery-3.3.1.slim.min.js"]
+        "js": ["js/lib.js", "js/content.js", "js/jquery-3.4.1.min.js"]
     }],
     "permissions": [
         "activeTab",
+        "clipboardWrite",
         "http://*/*",
         "https://*/*"
     ]

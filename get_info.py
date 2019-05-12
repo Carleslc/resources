@@ -14,7 +14,7 @@ from PIL import Image
 
 RESOURCES_URL = "https://airtable.com/shrnzLIolsKJMD9Ql"
 THUMBNAIL_URL = "https://api.thumbnail.ws/api/abd0c3864495e337e453a3795c676a9ead164b1b3030/thumbnail/get"
-SPLIT_CHARS = "-|:."
+SPLIT_CHARS = "-|–:."
 
 def set_args():
     global args
@@ -37,13 +37,20 @@ def print_colored(message, *colors):
         if not args.colorless:
             printnoln(Style.RESET_ALL)
 
-def print_meta(og_tag, *colors):
-    prop = html.find("meta", property=f"og:{og_tag}")
+def content(prop):
+    return prop.get("content") if prop is not None else None
+
+def meta(tag):
+    attrs = dict()
+    attrs["property" if tag.startswith("og:") else "name"] = tag
+    return content(html.find("meta", attrs))
+
+def print_meta(tag, *colors):
+    prop = meta(tag)
     if prop is not None:
-        prop = prop["content"]
         print_colored(prop, *colors)
     else:
-        print_colored(f"No og:{og_tag} provided", Fore.RED)
+        print_colored(f"No {tag} provided", Fore.RED)
     return prop
 
 def get_source(url):
@@ -68,17 +75,18 @@ def copy_display(image_url):
         Image.open(get(image_url, stream=True).raw).show()
 
 def add_resource(title, link, description):
-    params = { 'prefill_Link': link }
-    if title is not None:
-        params['prefill_Title'] = title
-    if description is not None:
-        params['prefill_Description'] = description
-    url = get_url(RESOURCES_URL, params)
-    webbrowser.open(url)
+    params = dict()
+    def add_param(name, value):
+        if value:
+            params[name] = value.strip()
+    add_param('prefill_Title', title)
+    add_param('prefill_Link', link)
+    add_param('prefill_Description', description)
+    webbrowser.open(get_url(RESOURCES_URL, params))
 
 def strip_title(title):
     if title is not None:
-        return re.split(f"[{SPLIT_CHARS}]+", title)[0].strip()
+        return re.split(f"[{SPLIT_CHARS}]+", title)[0]
 
 if __name__ == "__main__":
     set_args()
@@ -87,14 +95,17 @@ if __name__ == "__main__":
     html = get_source(args.url)
     #print_colored(html.prettify(), Style.DIM)
     
-    url = print_meta("url", Style.DIM) or args.url
-    site_name = print_meta("site_name", Style.BRIGHT)
-    title = html.find("title").string.strip()
-    print(title)
-    print_meta("title", Fore.GREEN)
+    url = print_meta("og:url", Style.DIM) or args.url
+    site_name = print_meta("og:site_name", Style.BRIGHT)
+    title = html.find("title").string
+    print_colored(title, Fore.GREEN)
+    print_meta("og:title", Style.DIM, Fore.GREEN)
     description = print_meta("description", Fore.CYAN)
-    image = print_meta("image", Fore.YELLOW)
+    og_description = print_meta("og:description", Style.DIM, Fore.CYAN)
+    image = print_meta("og:image", Fore.YELLOW)
+    if image is None:
+        print("Using thumbnail as image")
     copy_display(image or thumbnail(url))
 
     if args.add:
-        add_resource(site_name or strip_title(title), url, description)
+        add_resource(site_name or strip_title(title), url, description or og_description)
