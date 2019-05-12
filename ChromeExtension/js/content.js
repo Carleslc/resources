@@ -24,9 +24,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         let response = {
             title: og("site_name") || strip(currentTab.title || og("title")),
             description: meta("description") || og("description"),
-            image: og("image"),
+            image: og("image") || "",
             url: og("url") || currentTab.url
         };
+        if (response.image.startsWith('/')) {
+            response.image = response.url + response.image;
+        }
         sendResponse(response);
     }
     return true; // async response

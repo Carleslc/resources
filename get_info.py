@@ -66,7 +66,7 @@ def get_url(url, params):
     return url + '?' + urlencode(params)
 
 def thumbnail(url):
-    return get_url(THUMBNAIL_URL, { 'url': url, 'width': 1080 })
+    return get_url(THUMBNAIL_URL, { 'url': url, 'width': 720 })
 
 def copy_display(image_url):
     pyperclip.copy(image_url)
@@ -105,7 +105,10 @@ if __name__ == "__main__":
     image = print_meta("og:image", Fore.YELLOW)
     if image is None:
         print("Using thumbnail as image")
-    copy_display(image or thumbnail(url))
+        image = thumbnail(url)
+    elif image.startswith('/'):
+        image = url + image
+    copy_display(image)
 
     if args.add:
         add_resource(site_name or strip_title(title), url, description or og_description)

@@ -6,7 +6,7 @@ function getUrl(baseUrl, params) {
 }
 
 function thumbnail(url) {
-    return getUrl(THUMBNAIL_URL, { url: url, width: 1080 })
+    return getUrl(THUMBNAIL_URL, { url: url, width: 720 })
 }
 
 function setStatus(message) {
