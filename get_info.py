@@ -85,8 +85,7 @@ def add_resource(title, link, description):
     webbrowser.open(get_url(RESOURCES_URL, params))
 
 def strip_title(title):
-    if title is not None:
-        return re.split(f"[{SPLIT_CHARS}]+", title)[0]
+    return re.split(f"[{SPLIT_CHARS}]+", title)[0] if title is not None else None
 
 if __name__ == "__main__":
     set_args()
@@ -111,4 +110,4 @@ if __name__ == "__main__":
     copy_display(image)
 
     if args.add:
-        add_resource(site_name or strip_title(title), url, description or og_description)
+        add_resource(strip_title(site_name or title), url, description or og_description)
