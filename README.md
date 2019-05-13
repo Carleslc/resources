@@ -122,6 +122,7 @@ Si quieres crear tu propia página para visualizar solo tus propios recursos, co
 2. Haz click en ![Copy base](https://i.imgur.com/vTfzOJp.png) para duplicar la base de datos en tu cuenta de Airtable. Si no tienes cuenta de Airtable tendrás que crear una. El plan gratuito permite tener hasta 1200 recursos (filas de la tabla).
 3. Visita la página [Getting started: Table2Site](https://table2site.com/documentation/getting-started) y sigue los pasos que allí se indican para tener tu propia página gratuita enlazada con la base de Airtable que has copiado en el paso anterior.
 4. Si quieres utilizar el script y la extensión para agregar recursos rápidamente a tu propia página clona o descarga este repositorio y cambia la `RESOURCES_URL` en `get_info.py` y `ChromeExtension/js/popup.js` por el enlace de tu propia base de Airtable. Por último, modifica los enlaces y las descripciones de los ficheros `ChromeExtension/manifest.json` y `ChromeExtension/popup.html`.
+5. Si te ha sido de utilidad [considera ayudarme por el precio de un café](https://ko-fi.com/carleslc) 😊. ¡Gracias!
 
 ## Agradecimientos
 
