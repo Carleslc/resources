@@ -2,6 +2,8 @@
 
 _Lista colaborativa de herramientas y servicios para prototipado, diseño, análisis y desarrollo._
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/C0C2VFGD)
+
 ### Tabla de contenidos
 
 <!-- MarkdownTOC -->
