@@ -14,7 +14,7 @@ from PIL import Image
 
 RESOURCES_URL = "https://airtable.com/shrnzLIolsKJMD9Ql"
 THUMBNAIL_URL = "https://api.thumbnail.ws/api/abd0c3864495e337e453a3795c676a9ead164b1b3030/thumbnail/get"
-SPLIT_CHARS = "-|–:."
+SPLIT_CHARS = "-|–:—."
 
 def set_args():
     global args
