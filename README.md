@@ -1,6 +1,6 @@
 # Recursos
 
-_Lista colaborativa de herramientas y servicios para prototipado, diseño, análisis y desarrollo._
+_Lista colaborativa de herramientas y servicios para aprendizaje, prototipado, diseño, análisis, gestión y desarrollo._
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/carleslc)
 
