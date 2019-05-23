@@ -12,7 +12,7 @@ function meta(tag) {
 
 function strip(title) {
     if (title !== undefined) {
-        return title.split(/[-|–:–.—]+/)[0]
+        return title.split(/[-|–:–.—/]+/)[0]
     }
 }
 
