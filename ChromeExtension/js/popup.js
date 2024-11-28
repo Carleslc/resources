@@ -16,15 +16,11 @@ function setStatus(message) {
     status.delay(2000).slideUp(500, status.hide);
 }
 
-function copyToClipboard(url) {
-    document.addEventListener('copy', function copyUrlAsPlainText(e) {
-        e.clipboardData.setData('text/plain', url);
-        e.preventDefault();
-        document.removeEventListener('copy', copyUrlAsPlainText);
-    });
-    if (document.execCommand('copy')) {
+async function copyToClipboard(url) {
+    try {
+        await navigator.clipboard.writeText(url);
         setStatus("Image URL copied to clipboard!");
-    } else {
+    } catch (err) {
         setStatus("Failed to copy, use this URL: " + url);
     }
 }
@@ -43,21 +39,27 @@ function addResource(title, link, description) {
     chrome.tabs.create({ url: getUrl(RESOURCES_URL, params) });
 }
 
-function loadMetaInfo(currentTab) {
-    chrome.tabs.sendMessage(currentTab.id, { event: "getMetaInfo", tab: currentTab }, function(response) {
+async function loadMetaInfo(currentTab) {
+    try {
+        const response = await chrome.tabs.sendMessage(currentTab.id, { 
+            event: "getMetaInfo", 
+            tab: currentTab 
+        });
+        
+        $('#site-url').text(response.url);
         $('#site-title').text(response.title);
         $('#site-description').text(response.description);
-        let imageUri = response.image || thumbnail(response.url);
+
+        const imageUri = response.image || thumbnail(response.url);
         $('#site-thumbnail').attr('src', imageUri);
-        $('#site-thumbnail-overlay').click(function() {
-            copyToClipboard(imageUri);
-        });
-        $('#site-url').text(response.url);
-        $('#add-btn').click(function() {
-            addResource(response.title, response.url, response.description);
-        });
+        $('#site-thumbnail-overlay').click(() => copyToClipboard(imageUri));
+
+        $('#add-btn').click(() => addResource(response.title, response.url, response.description));
         $('#add-btn').prop("disabled", false);
-    });
+    } catch (error) {
+        console.error('Error loading meta info:', error);
+        setStatus('Error loading page meta info');
+    }
 }
 
 $(function() {

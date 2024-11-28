@@ -16,8 +16,6 @@ function strip(title) {
     }
 }
 
-sendEvent("enablePopup"); // Enable extension only for matching schema (http/https)
-
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.event === "getMetaInfo") {
         let currentTab = request.tab;

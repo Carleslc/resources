@@ -1,9 +1,4 @@
-function enablePopup(tab) {
-    chrome.pageAction.show(tab.id);
-}
-
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.event === "enablePopup") {
-        onCurrentTab(enablePopup);
-    }
+// Service worker extension installed
+chrome.runtime.onInstalled.addListener(() => {
+  console.log('Extensión "Recursos Carleslc" instalada');
 });

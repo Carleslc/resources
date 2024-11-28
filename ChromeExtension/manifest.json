@@ -1,10 +1,10 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Recursos Carleslc",
-    "version": "1.0",
+    "version": "2.0",
     "description": "Añade un recurso a https://carleslc.me/resources",
     "homepage_url": "https://github.com/Carleslc/resources/",
-    "page_action": {
+    "action": {
         "default_icon": "logo.png",
         "default_title": "Recursos Carleslc",
         "default_popup": "popup.html"
@@ -13,16 +13,17 @@
         "64": "logo.png"
     },
     "background": {
-        "scripts": ["js/lib.js", "js/background.js"],
-        "persistent": false
+        "service_worker": "js/background.js"
     },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["js/lib.js", "js/content.js", "js/jquery-3.4.1.min.js"]
+        "js": ["js/lib.js", "js/content.js"]
     }],
     "permissions": [
         "activeTab",
-        "clipboardWrite",
+        "clipboardWrite"
+    ],
+    "host_permissions": [
         "http://*/*",
         "https://*/*"
     ]
