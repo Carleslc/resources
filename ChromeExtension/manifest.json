@@ -17,7 +17,11 @@
     },
     "content_scripts": [{
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["js/lib.js", "js/content.js"]
+        "js": [
+            "js/jquery-3.7.1.min.js",
+            "js/lib.js",
+            "js/content.js"
+        ]
     }],
     "permissions": [
         "activeTab",
